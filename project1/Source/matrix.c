@@ -1,4 +1,5 @@
 #include<stdio.h>
+#include<string.h>
 #include<time.h>
 
 #define INF 1000000000
@@ -50,6 +51,8 @@ int main(){
     f=fopen("../Output/output.txt","w");
     t=fopen("../Output/time.txt","w");
     for(i=4;i<=28;i+=4){
+        memset(m,0,sizeof(m));
+        memset(s,0,sizeof(s));
         clock_gettime(CLOCK_MONOTONIC,&start); //开始计时
         matrix_chain_order(data,i);
         clock_gettime(CLOCK_MONOTONIC,&stop); //结束计时
@@ -59,5 +62,6 @@ int main(){
         fprintf(f,"\n");
     }
     fclose(f);
+    fclose(t);
     return 0;
 }
